@@ -1,11 +1,8 @@
 // Oscar Saharoy 2021
 
-
 const canvas = document.querySelector('#shader-canvas');
 const renderer = new THREE.WebGLRenderer({canvas: canvas, preserveDrawingBuffer: true });
 renderer.autoClearColor = false;
-
-alert(99)
 
 const camera = new THREE.OrthographicCamera(
     -1, // left
@@ -65,7 +62,6 @@ function download() {
     link.click();
 }
 
-document.addEventListener( "keydown", e => e.key == "d" ? download() : 0 );
 
 
 requestAnimationFrame(render);
