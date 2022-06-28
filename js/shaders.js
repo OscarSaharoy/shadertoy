@@ -22,7 +22,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
     vec2 p=fragCoord.xy/r;
     vec2 uvs = p;
     p-=.5;
-    p.x *= r.x/r.y;
+    p.x *= max(1., r.x/r.y);
+    p.y *= max(1., r.y/r.x);
     l=length(p);
 
 	for(int i=0;i<3;i++) {
