@@ -1,4 +1,4 @@
-// Oscar Saharoy 2021
+// Oscar Saharoy 2022
 
 const canvas = document.querySelector('#shader-canvas');
 const renderer = new THREE.WebGLRenderer({canvas: canvas, preserveDrawingBuffer: true });
@@ -18,8 +18,8 @@ const plane = new THREE.PlaneGeometry(2, 2);
 const dpr   = window.devicePixelRatio;
 
 const uniforms = {
-    iTime:          { value: 0 },
-    iResolution:    { value: new THREE.Vector2() },
+    uTime:          { value: 0 },
+    uResolution:    { value: new THREE.Vector2() },
 };
 
 const material = new THREE.ShaderMaterial({
@@ -32,25 +32,28 @@ const material = new THREE.ShaderMaterial({
 scene.add(new THREE.Mesh(plane, material));
 
 
-new ResizeObserver( () => resizeRendererToDisplaySize(renderer) ).observe( canvas );
-
 function resizeRendererToDisplaySize( renderer ) {
 
     const width   = canvas.clientWidth;
     const height  = canvas.clientHeight;
 
     renderer.setSize( width*dpr, height*dpr, false );
-    uniforms.iResolution.value.set( width * dpr, height * dpr );
+    uniforms.uResolution.value.set( width * dpr, height * dpr );
 }
+
+new ResizeObserver( () => resizeRendererToDisplaySize(renderer) ).observe( canvas );
+
 
 function render( time ) {
 
     renderer.render(scene, camera);
 
-    uniforms.iTime.value = time * 0.001;
+    uniforms.uTime.value = time * 0.001;
 
     requestAnimationFrame(render);
 }
+
+requestAnimationFrame(render);
 
 
 function download() {
@@ -62,6 +65,3 @@ function download() {
     link.click();
 }
 
-
-
-requestAnimationFrame(render);
