@@ -1,9 +1,5 @@
 // Oscar Saharoy 2022
-
-
-const fragmentShader = `
-
-// ====================================================================================
+export default `
 
 // remix of http://www.pouet.net/prod.php?which=57245 by Danilo Guanabara
 
@@ -49,4 +45,3 @@ void main() {
 // ====================================================================================
 
 `;
-

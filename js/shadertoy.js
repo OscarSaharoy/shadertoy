@@ -1,5 +1,8 @@
 // Oscar Saharoy 2022
 
+import * as THREE from './three.module.js'; 
+import fragmentShader from "../glsl/frag.glsl.js";
+
 const canvas = document.querySelector('#shader-canvas');
 const renderer = new THREE.WebGLRenderer({canvas: canvas, preserveDrawingBuffer: true });
 renderer.autoClearColor = false;
